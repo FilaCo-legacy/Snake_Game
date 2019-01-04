@@ -26,6 +26,18 @@ namespace SnakeMain
             next = pref = null;
             Data = elem;
         }
+        public void ShiftRight(T headValue)
+        {
+            Bin_List<T> tmp = this;
+            while (tmp.next != null)
+                tmp = tmp.next;
+            while (tmp.pref != null)
+            {
+                tmp.Data = tmp.pref.Data;
+                tmp = tmp.pref;
+            }
+            Data = headValue;
+        }
         public void AddToEnd(T elem)
         {
             if (next != null)
@@ -36,21 +48,15 @@ namespace SnakeMain
         }
         public void AddToBegin(T elem)
         {
-            Bin_List<T> tmp = Last();
-            AddToEnd(Last().Data);
-            int curSize = Size;
-            for (int i = 1; i < curSize-1; ++i)
-            {
-                tmp.Data = tmp.pref.Data;
-                tmp = tmp.pref;
-            }
-            Data = elem;
+            T tmp = FindLast();
+            ShiftRight(elem);
+            AddToEnd(tmp);
         }
-        public Bin_List<T> Last()
+        public T FindLast()
         {
             if (next != null)
-                return next.Last();
-            return this;
+                return next.FindLast();
+            return Data;
         }
         IEnumerator IEnumerable.GetEnumerator()
         {
