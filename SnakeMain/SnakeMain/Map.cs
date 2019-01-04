@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace SnakeMain
 {
-    class Map
+    enum TPoint { EMPTY, FRUIT, SNAKE }
+    class Map 
     {
-        
+        private const int WIDTH = 20, HEIGHT = 20;
+        private char[,] matrix;
+        public char this[int x, int y]
+        {
+            get { return matrix[y, x]; }
+            set { }
+        }
     }
 }
