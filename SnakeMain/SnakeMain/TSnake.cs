@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace SnakeMain
 {
-    public class Snake
+    public class TSnake
     {
         const int MIN_SIZE = 3;
         public enum TDirection { UP, DOWN, LEFT, RIGHT};
-        private Bin_List<TPoint> body;
+        private TBinList<TPoint> body;
         public TDirection Direct { get; set; }
         public int Size { get { return body.Size; } }
         public TPoint Head { get { return body.Data; } }
         public TPoint Tail { get { return body.FindLast(); } }
-        public Snake (int _x, int _y)
+        public TSnake (int _x, int _y)
         {
             Direct = TDirection.UP;
-            body = new Bin_List<TPoint>(new TPoint(_x, _y));
+            body = new TBinList<TPoint>(new TPoint(_x, _y));
             for (int i = 1; i < MIN_SIZE; ++i)
             {
                 GrowUp();

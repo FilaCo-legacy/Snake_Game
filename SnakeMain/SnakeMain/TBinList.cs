@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SnakeMain
 {
-    class Bin_List<T>:IEnumerable
+    class TBinList<T>:IEnumerable
     {
-        private Bin_List<T> next, pref;
+        private TBinList<T> next, pref;
         public int Size
         {
             get
@@ -21,14 +21,14 @@ namespace SnakeMain
             }
         }
         public T Data { get; set; }
-        public Bin_List(T elem)
+        public TBinList(T elem)
         {
             next = pref = null;
             Data = elem;
         }
         public void ShiftRight(T headValue)
         {
-            Bin_List<T> tmp = this;
+            TBinList<T> tmp = this;
             while (tmp.next != null)
                 tmp = tmp.next;
             while (tmp.pref != null)
@@ -42,7 +42,7 @@ namespace SnakeMain
         {
             if (next != null)
                 next.AddToEnd(elem);
-            Bin_List<T> nElem = new Bin_List<T>(elem);
+            TBinList<T> nElem = new TBinList<T>(elem);
             next = nElem;
             nElem.pref = next;
         }
@@ -60,7 +60,7 @@ namespace SnakeMain
         }
         IEnumerator IEnumerable.GetEnumerator()
         {
-            Bin_List<T> cur = this;
+            TBinList<T> cur = this;
             do
             {
                 yield return cur;
