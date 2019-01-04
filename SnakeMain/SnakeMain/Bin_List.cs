@@ -36,13 +36,21 @@ namespace SnakeMain
         }
         public void AddToBegin(T elem)
         {
-            AddToEnd(FindLast());
+            Bin_List<T> tmp = Last();
+            AddToEnd(Last().Data);
+            int curSize = Size;
+            for (int i = 1; i < curSize-1; ++i)
+            {
+                tmp.Data = tmp.pref.Data;
+                tmp = tmp.pref;
+            }
+            Data = elem;
         }
-        public T FindLast()
+        public Bin_List<T> Last()
         {
             if (next != null)
-                return next.FindLast();
-            return Data;
+                return next.Last();
+            return this;
         }
         IEnumerator IEnumerable.GetEnumerator()
         {
