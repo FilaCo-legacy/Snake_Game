@@ -20,6 +20,8 @@ namespace SnakeMain
         }
         public Map(TPoint [,] _map)
         {
+            if (_map.GetLength(0) > MAX_HEIGHT || _map.GetLength(1) > MAX_WIDTH)
+                throw new Exception("Размер карты больше максимального");
             matrix = _map;
         }
     }

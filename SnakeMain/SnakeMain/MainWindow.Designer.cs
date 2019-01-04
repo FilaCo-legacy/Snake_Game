@@ -28,13 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.openMap = new System.Windows.Forms.OpenFileDialog();
+            this.gamePlace = new System.Windows.Forms.PictureBox();
+            this.topList = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.gamePlace)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // openMap
+            // 
+            this.openMap.DefaultExt = "map";
+            this.openMap.Filter = "Map | *.map";
+            // 
+            // gamePlace
+            // 
+            this.gamePlace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.gamePlace.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gamePlace.Location = new System.Drawing.Point(12, 12);
+            this.gamePlace.Name = "gamePlace";
+            this.gamePlace.Size = new System.Drawing.Size(445, 456);
+            this.gamePlace.TabIndex = 0;
+            this.gamePlace.TabStop = false;
+            // 
+            // topList
+            // 
+            this.topList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.topList.Location = new System.Drawing.Point(476, 12);
+            this.topList.Multiline = true;
+            this.topList.Name = "topList";
+            this.topList.Size = new System.Drawing.Size(152, 177);
+            this.topList.TabIndex = 1;
+            // 
+            // MainWindow
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.BackColor = System.Drawing.Color.RoyalBlue;
+            this.ClientSize = new System.Drawing.Size(640, 480);
+            this.Controls.Add(this.topList);
+            this.Controls.Add(this.gamePlace);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "MainWindow";
+            this.Text = "SnakeTheGame";
+            ((System.ComponentModel.ISupportInitialize)(this.gamePlace)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.OpenFileDialog openMap;
+        private System.Windows.Forms.PictureBox gamePlace;
+        private System.Windows.Forms.TextBox topList;
     }
 }
 
