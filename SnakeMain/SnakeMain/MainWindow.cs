@@ -16,5 +16,13 @@ namespace SnakeMain
         {
             InitializeComponent();
         }
+
+        private void itemLoadFile_Click(object sender, EventArgs e)
+        {
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                try
+            }
+        }
     }
 }

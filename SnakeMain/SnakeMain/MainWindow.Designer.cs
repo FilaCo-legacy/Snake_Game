@@ -32,9 +32,9 @@
             this.gamePlace = new System.Windows.Forms.PictureBox();
             this.topList = new System.Windows.Forms.TextBox();
             this.menuButtons = new System.Windows.Forms.Panel();
-            this.buttonNGame = new System.Windows.Forms.Button();
-            this.buttonPause = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.buttonPause = new System.Windows.Forms.Button();
+            this.buttonNGame = new System.Windows.Forms.Button();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.toolFile = new System.Windows.Forms.ToolStripMenuItem();
             this.itemLoadFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,14 +84,14 @@
             this.menuButtons.Size = new System.Drawing.Size(152, 180);
             this.menuButtons.TabIndex = 3;
             // 
-            // buttonNGame
+            // buttonExit
             // 
-            this.buttonNGame.Location = new System.Drawing.Point(34, 13);
-            this.buttonNGame.Name = "buttonNGame";
-            this.buttonNGame.Size = new System.Drawing.Size(75, 23);
-            this.buttonNGame.TabIndex = 0;
-            this.buttonNGame.Text = "Новая игра";
-            this.buttonNGame.UseVisualStyleBackColor = true;
+            this.buttonExit.Location = new System.Drawing.Point(34, 141);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(75, 23);
+            this.buttonExit.TabIndex = 2;
+            this.buttonExit.Text = "Выход";
+            this.buttonExit.UseVisualStyleBackColor = true;
             // 
             // buttonPause
             // 
@@ -102,14 +102,14 @@
             this.buttonPause.Text = "Пауза";
             this.buttonPause.UseVisualStyleBackColor = true;
             // 
-            // buttonExit
+            // buttonNGame
             // 
-            this.buttonExit.Location = new System.Drawing.Point(34, 141);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(75, 23);
-            this.buttonExit.TabIndex = 2;
-            this.buttonExit.Text = "Выход";
-            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonNGame.Location = new System.Drawing.Point(34, 13);
+            this.buttonNGame.Name = "buttonNGame";
+            this.buttonNGame.Size = new System.Drawing.Size(75, 23);
+            this.buttonNGame.TabIndex = 0;
+            this.buttonNGame.Text = "Новая игра";
+            this.buttonNGame.UseVisualStyleBackColor = true;
             // 
             // mainMenu
             // 
@@ -136,6 +136,7 @@
             this.itemLoadFile.Name = "itemLoadFile";
             this.itemLoadFile.Size = new System.Drawing.Size(180, 22);
             this.itemLoadFile.Text = "Открыть...";
+            this.itemLoadFile.Click += new System.EventHandler(this.itemLoadFile_Click);
             // 
             // itemSaveGame
             // 

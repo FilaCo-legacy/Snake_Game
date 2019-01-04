@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace SnakeMain
 {
     enum MapPoint { EMPTY, FRUIT, SNAKE }
+    [Serializable]
     class Map 
     {
         private const int MAX_WIDTH = 20, MAX_HEIGHT = 20;

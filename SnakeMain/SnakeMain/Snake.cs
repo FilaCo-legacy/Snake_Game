@@ -14,10 +14,15 @@ namespace SnakeMain
         public TDirection Direct { get; set; }
         public int Size { get { return body.Size; } }
         public TPoint Head { get { return body.Data; } }
-        public TPoint Tail { get { return body.Last().Data; } }
+        public TPoint Tail { get { return body.FindLast(); } }
         public Snake (int _x, int _y)
         {
+            Direct = TDirection.UP;
             body = new Bin_List<TPoint>(new TPoint(_x, _y));
+            for (int i = 1; i < MIN_SIZE; ++i)
+            {
+                GrowUp();
+            }
         }
         public void Move()
         {
@@ -37,7 +42,7 @@ namespace SnakeMain
                     nElem = new TPoint(Head.X + 1, Head.Y);
                     break;
             }
-            Bin_List<TPoint> tmp = body.Last();
+            body.ShiftRight(nElem);
         }
         public void GrowUp()
         {
