@@ -6,16 +6,6 @@ using System.Threading.Tasks;
 
 namespace SnakeMain
 {
-    class TPoint
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public TPoint(int _x, int _y)
-        {
-            X = _x;
-            Y = _y;
-        }
-    }
     public class Snake
     {
         const int MIN_SIZE = 3;
@@ -28,6 +18,10 @@ namespace SnakeMain
         public Snake (int _x, int _y)
         {
             body = new Bin_List<TPoint>(new TPoint(_x, _y));
+        }
+        public void Move()
+        {
+
         }
         public void GrowUp()
         {

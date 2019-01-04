@@ -10,17 +10,19 @@ namespace SnakeMain
     class Bin_List<T>:IEnumerable
     {
         private Bin_List<T> next, pref;
-        public int Size { get; set; }
-        public T Data { get; set; }
-        public Bin_List()
+        public int Size
         {
-            Size = 0;
-            next = pref = null;
-            Data = default(T);
+            get
+            {
+                if (next == null)
+                    return 1;
+                else
+                    return next.Size + 1;
+            }
         }
+        public T Data { get; set; }
         public Bin_List(T elem)
         {
-            Size = 1;
             next = pref = null;
             Data = elem;
         }
@@ -31,6 +33,10 @@ namespace SnakeMain
             Bin_List<T> nElem = new Bin_List<T>(elem);
             next = nElem;
             nElem.pref = next;
+        }
+        public void AddToBegin(T elem)
+        {
+            AddToEnd(FindLast());
         }
         public T FindLast()
         {
