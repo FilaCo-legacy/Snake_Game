@@ -9,12 +9,18 @@ namespace SnakeMain
     enum TPoint { EMPTY, FRUIT, SNAKE }
     class Map 
     {
-        private const int WIDTH = 20, HEIGHT = 20;
-        private char[,] matrix;
-        public char this[int x, int y]
+        private const int MAX_WIDTH = 20, MAX_HEIGHT = 20;
+        private TPoint[,] matrix;
+        public int Width { get { return matrix.GetLength(1); } }
+        public int Height { get { return matrix.GetLength(0); } }
+        public TPoint this[int x, int y]
         {
             get { return matrix[y, x]; }
-            set { }
+            set { matrix[y, x] = value; }
+        }
+        public Map(TPoint [,] _map)
+        {
+            matrix = _map;
         }
     }
 }
