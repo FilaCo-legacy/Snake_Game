@@ -19,7 +19,6 @@ namespace SnakeMain
         {
             InitializeComponent();
         }
-
         private void itemLoadFile_Click(object sender, EventArgs e)
         {
             if (openFile.ShowDialog() == DialogResult.OK)
@@ -32,6 +31,21 @@ namespace SnakeMain
                         Control.LoadMap(openFile.FileName);
                     else
                         MessageBox.Show(this, "Формат файла неверен", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(this, exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void itemSaveGame_Click(object sender, EventArgs e)
+        {
+            if (saveGame.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    Control.SaveGame(saveGame.FileName);
                 }
                 catch (Exception exc)
                 {

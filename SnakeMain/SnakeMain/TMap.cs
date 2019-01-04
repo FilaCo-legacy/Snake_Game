@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace SnakeMain
 {
-    public enum TMapPoint { EMPTY, FRUIT, SNAKE }
-    [Serializable]
+    public enum TMapPoint { EMPTY, FRUIT, WALL, SNAKE }
     public class TMap 
     {
         private const int MAX_WIDTH = 20, MAX_HEIGHT = 20;

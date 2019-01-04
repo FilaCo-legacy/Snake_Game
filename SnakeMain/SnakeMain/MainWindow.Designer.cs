@@ -40,6 +40,7 @@
             this.itemLoadFile = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSaveGame = new System.Windows.Forms.ToolStripMenuItem();
             this.itemExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveGame = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.gamePlace)).BeginInit();
             this.menuButtons.SuspendLayout();
             this.mainMenu.SuspendLayout();
@@ -134,7 +135,7 @@
             // itemLoadFile
             // 
             this.itemLoadFile.Name = "itemLoadFile";
-            this.itemLoadFile.Size = new System.Drawing.Size(180, 22);
+            this.itemLoadFile.Size = new System.Drawing.Size(160, 22);
             this.itemLoadFile.Text = "Открыть...";
             this.itemLoadFile.Click += new System.EventHandler(this.itemLoadFile_Click);
             // 
@@ -143,12 +144,18 @@
             this.itemSaveGame.Name = "itemSaveGame";
             this.itemSaveGame.Size = new System.Drawing.Size(180, 22);
             this.itemSaveGame.Text = "Сохранить игру";
+            this.itemSaveGame.Click += new System.EventHandler(this.itemSaveGame_Click);
             // 
             // itemExit
             // 
             this.itemExit.Name = "itemExit";
-            this.itemExit.Size = new System.Drawing.Size(180, 22);
+            this.itemExit.Size = new System.Drawing.Size(160, 22);
             this.itemExit.Text = "Выход";
+            // 
+            // saveGame
+            // 
+            this.saveGame.DefaultExt = "game";
+            this.saveGame.Filter = "Game file | *.game";
             // 
             // MainWindow
             // 
@@ -186,6 +193,7 @@
         private System.Windows.Forms.ToolStripMenuItem itemLoadFile;
         private System.Windows.Forms.ToolStripMenuItem itemSaveGame;
         private System.Windows.Forms.ToolStripMenuItem itemExit;
+        private System.Windows.Forms.SaveFileDialog saveGame;
     }
 }
 
