@@ -32,6 +32,12 @@ namespace SnakeMain
             next = nElem;
             nElem.pref = next;
         }
+        public T FindLast()
+        {
+            if (next != null)
+                return next.FindLast();
+            return Data;
+        }
         IEnumerator IEnumerable.GetEnumerator()
         {
             Bin_List<T> cur = this;
