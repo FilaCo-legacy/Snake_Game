@@ -11,10 +11,11 @@ namespace SnakeMain
     public class Control
     {
         public static TGame Game { get; set; }
+        public static MainWindow OwnerForm { get; set; } 
         private static TMapPoint[,] ConvInpToMap(string [] input)
         {
-            TMapPoint[,] tmp = new TMapPoint[input.Length, input.Length];
-            for (int i = 0; i < input.Length; ++i)
+            TMapPoint[,] tmp = new TMapPoint[input.Length-1, input.Length-1];
+            for (int i = 0; i < input.Length-1; ++i)
             {
                 input[i] = input[i].Replace("\t", "");
                 for (int j = 0; j < input[i].Length; ++j)
@@ -27,11 +28,17 @@ namespace SnakeMain
             }
             return tmp;
         }
+        public static void InitGame(MainWindow owner)
+        {
+            Game = new TGame();
+            OwnerForm = owner;
+        }
         public static void LoadMap(string fileName)
         {
             using (StreamReader sr = new StreamReader(fileName))
             {
-                string[] inp = sr.ReadToEnd().Split('\n');
+                string inpStr = sr.ReadToEnd().Replace("\r", "");
+                string[] inp = inpStr.Split('\n');
                 TMapPoint [,] converted = ConvInpToMap(inp);
                 Game.Map = new TMap(converted);
                 sr.Close();

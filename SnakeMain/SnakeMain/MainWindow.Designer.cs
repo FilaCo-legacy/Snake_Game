@@ -49,24 +49,27 @@
             // openFile
             // 
             this.openFile.DefaultExt = "map";
-            this.openFile.Filter = "Map file | *.map| Game file |*.game";
+            this.openFile.Filter = "\"Map file | *.map| Game file |*.game\"";
             // 
             // gamePlace
             // 
             this.gamePlace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.gamePlace.BackColor = System.Drawing.Color.RoyalBlue;
             this.gamePlace.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gamePlace.Location = new System.Drawing.Point(12, 38);
+            this.gamePlace.MinimumSize = new System.Drawing.Size(400, 400);
             this.gamePlace.Name = "gamePlace";
-            this.gamePlace.Size = new System.Drawing.Size(445, 430);
+            this.gamePlace.Size = new System.Drawing.Size(400, 400);
             this.gamePlace.TabIndex = 0;
             this.gamePlace.TabStop = false;
+            this.gamePlace.Paint += new System.Windows.Forms.PaintEventHandler(this.gamePlace_Paint);
             // 
             // topList
             // 
             this.topList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.topList.Enabled = false;
-            this.topList.Location = new System.Drawing.Point(476, 38);
+            this.topList.Location = new System.Drawing.Point(450, 38);
             this.topList.Multiline = true;
             this.topList.Name = "topList";
             this.topList.Size = new System.Drawing.Size(152, 180);
@@ -80,7 +83,7 @@
             this.menuButtons.Controls.Add(this.buttonExit);
             this.menuButtons.Controls.Add(this.buttonPause);
             this.menuButtons.Controls.Add(this.buttonNGame);
-            this.menuButtons.Location = new System.Drawing.Point(476, 288);
+            this.menuButtons.Location = new System.Drawing.Point(450, 257);
             this.menuButtons.Name = "menuButtons";
             this.menuButtons.Size = new System.Drawing.Size(152, 180);
             this.menuButtons.TabIndex = 3;
@@ -155,19 +158,22 @@
             // saveGame
             // 
             this.saveGame.DefaultExt = "game";
-            this.saveGame.Filter = "Game file | *.game";
+            this.saveGame.Filter = "\"Game file | *.game\"";
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(640, 480);
+            this.ClientSize = new System.Drawing.Size(640, 449);
             this.Controls.Add(this.menuButtons);
             this.Controls.Add(this.topList);
             this.Controls.Add(this.gamePlace);
             this.Controls.Add(this.mainMenu);
+            this.DoubleBuffered = true;
             this.MainMenuStrip = this.mainMenu;
+            this.MaximumSize = new System.Drawing.Size(656, 488);
+            this.MinimumSize = new System.Drawing.Size(656, 488);
             this.Name = "MainWindow";
             this.Text = "SnakeTheGame";
             ((System.ComponentModel.ISupportInitialize)(this.gamePlace)).EndInit();

@@ -10,8 +10,8 @@ namespace SnakeMain
     public enum TMapPoint { EMPTY, FRUIT, WALL, SNAKE }
     public class TMap 
     {
-        private const int MAX_WIDTH = 20, MAX_HEIGHT = 20;
         private TMapPoint[,] matrix;
+        public const int MAX_WIDTH = 20, MAX_HEIGHT = 20;
         public int Width { get { return matrix.GetLength(1); } }
         public int Height { get { return matrix.GetLength(0); } }
         public TMapPoint this[int x, int y]

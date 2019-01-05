@@ -11,5 +11,10 @@ namespace SnakeMain
     {
         public TMap Map { get; set; }
         public TSnake Snake { get; set; }
+        public TGame()
+        {
+            Map = null;
+            Snake = null;
+        }
     }
 }

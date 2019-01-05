@@ -13,11 +13,16 @@ namespace SnakeMain
 {
     public partial class MainWindow : Form
     {
-        private static Regex regGame = new Regex("*.game");
-        private static Regex regMap = new Regex("*.map");
+        private static Regex regGame = new Regex(@".*\.game");
+        private static Regex regMap = new Regex(@".*\.map");
+        private Bitmap buf;
+        private Graphics g;
         public MainWindow()
         {
             InitializeComponent();
+            Control.InitGame(this);
+            buf = new Bitmap(gamePlace.Width, gamePlace.Height);
+            g = gamePlace.CreateGraphics();
         }
         private void itemLoadFile_Click(object sender, EventArgs e)
         {
@@ -38,7 +43,6 @@ namespace SnakeMain
                 }
             }
         }
-
         private void itemSaveGame_Click(object sender, EventArgs e)
         {
             if (saveGame.ShowDialog() == DialogResult.OK)
@@ -52,6 +56,10 @@ namespace SnakeMain
                     MessageBox.Show(this, exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        private void gamePlace_Paint(object sender, PaintEventArgs e)
+        {
+           
         }
     }
 }
