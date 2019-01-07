@@ -10,6 +10,8 @@ namespace SnakeMain
 {
     public class Control
     {
+        private const string GameOverString = "GAME OVER";
+        private const string PauseString = "Pause";
         public static TGame Game { get; set; }
         public static MainWindow OwnerForm { get; set; } 
         private static TMapPoint[,] ConvInpToMap(string [] input)

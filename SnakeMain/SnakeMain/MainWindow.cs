@@ -41,6 +41,8 @@ namespace SnakeMain
                 {
                     MessageBox.Show(this, exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                VisualEffects.DrawEndGame(gamePlace.Width, gamePlace.Height, out buf);
+                g.DrawImage(buf, 0, 0);
             }
         }
         private void itemSaveGame_Click(object sender, EventArgs e)

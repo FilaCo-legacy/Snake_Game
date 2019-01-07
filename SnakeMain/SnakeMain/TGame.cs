@@ -11,10 +11,28 @@ namespace SnakeMain
     {
         public TMap Map { get; set; }
         public TSnake Snake { get; set; }
+        public int Score { get; set; }
         public TGame()
         {
             Map = null;
             Snake = null;
+
+        }
+        private void SnakeSpawn()
+        {
+
+        }
+        public void GameStart()
+        {
+
+        }
+        private void CheckState()
+        {
+
+        }
+        public void Turn()
+        {
+
         }
     }
 }
