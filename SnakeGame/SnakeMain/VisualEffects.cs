@@ -10,7 +10,7 @@ namespace SnakeMain
 {
     public class VisualEffects
     {
-        private static Font TitleFont = new Font("Microsoft Sans Seriff", 36.0f);
+        private static Font TitleFont = new Font("Tahoma", 36.0f);
         private static Random rnd = new Random();
         private static Bitmap spriteGrass = Properties.Resources.Grass;
         private static Bitmap[] spriteWall = new Bitmap[] { Properties.Resources.Wall1, Properties.Resources.Wall2,
@@ -48,13 +48,14 @@ namespace SnakeMain
                 g.Dispose();
             }
         }
-        public static void DrawMessage(string msg, int trgtWidth, int trgtHeight, out Bitmap buffer)
+        public static void DrawMessage(string msg, Brush txtColor, int trgtWidth, int trgtHeight, out Bitmap buffer)
         {
             buffer = new Bitmap(trgtWidth, trgtHeight);
             using (Graphics g = Graphics.FromImage(buffer))
             {
-                g.DrawString(msg, TitleFont, Brushes.Red, new PointF(trgtWidth / 2.0f - msg.Length * 
-                    TitleFont.Size / 2.0f, trgtHeight / 2.0f - TitleFont.Height / 2.0f));
+                PointF msgPlace = new PointF(trgtWidth / 2.0f - msg.Length *
+                    TitleFont.Size / 2.0f, trgtHeight / 2.0f - TitleFont.Height / 2.0f);
+                g.DrawString(msg, TitleFont, txtColor, msgPlace);
             }
         }
         public static void DrawBlackOut(int trgtWidth, int trgtHeight, out Bitmap buffer)
