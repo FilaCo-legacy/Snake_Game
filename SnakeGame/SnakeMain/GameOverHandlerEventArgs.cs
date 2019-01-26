@@ -9,5 +9,9 @@ namespace SnakeMain
     public class GameOverHandlerEventArgs
     {
         public int Score { get; set; }
+        public GameOverHandlerEventArgs(int score)
+        {
+            Score = score;
+        }
     }
 }

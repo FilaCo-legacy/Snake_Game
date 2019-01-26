@@ -148,6 +148,7 @@
             this.toolFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemLoadMap,
             this.itemExit});
+            this.toolFile.ImageTransparentColor = System.Drawing.Color.PaleGreen;
             this.toolFile.Name = "toolFile";
             this.toolFile.Size = new System.Drawing.Size(49, 20);
             this.toolFile.Text = "Файл";
@@ -158,7 +159,7 @@
             this.itemLoadMap.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.itemLoadMap.ForeColor = System.Drawing.Color.Black;
             this.itemLoadMap.Name = "itemLoadMap";
-            this.itemLoadMap.Size = new System.Drawing.Size(163, 22);
+            this.itemLoadMap.Size = new System.Drawing.Size(180, 22);
             this.itemLoadMap.Text = "Загрузить карту";
             this.itemLoadMap.Click += new System.EventHandler(this.itemLoadMap_Click);
             // 
@@ -168,7 +169,7 @@
             this.itemExit.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.itemExit.ForeColor = System.Drawing.Color.Black;
             this.itemExit.Name = "itemExit";
-            this.itemExit.Size = new System.Drawing.Size(163, 22);
+            this.itemExit.Size = new System.Drawing.Size(180, 22);
             this.itemExit.Text = "Выход";
             // 
             // mainTable

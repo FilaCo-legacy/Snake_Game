@@ -50,5 +50,9 @@ namespace SnakeMain
         {
             Game.ChangeDirSnake(_dir);
         }
+        public static void UpdateState()
+        {
+            Game.Turn();
+        }
     }
 }

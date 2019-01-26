@@ -71,7 +71,7 @@ namespace SnakeMain
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-
+            Control.UpdateState();
         }
     }
 }

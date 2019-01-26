@@ -45,10 +45,10 @@ namespace SnakeMain
         {
             Direct = TDirection.UP;
             body = new TBinList<TPoint>(new TPoint(_x, _y));
-            for (int i = 1; i < MIN_SIZE; ++i)
-            {
-                GrowUp();
-            }
+            //for (int i = 1; i < MIN_SIZE; ++i)
+            //{
+            //    GrowUp();
+            //}
         }
         public void Move()
         {
@@ -70,25 +70,9 @@ namespace SnakeMain
             }
             body.ShiftRight(nElem);
         }
-        public void GrowUp()
+        public void GrowUp(TPoint tail)
         {
-            TPoint nElem = null;
-            switch (Direct)
-            {
-                case TDirection.UP:
-                    nElem = new TPoint(Head.X, Head.Y - 1);
-                    break;
-                case TDirection.DOWN:
-                    nElem = new TPoint(Head.X, Head.Y + 1);
-                    break;
-                case TDirection.LEFT:
-                    nElem = new TPoint(Head.X - 1, Head.Y);
-                    break;
-                case TDirection.RIGHT:
-                    nElem = new TPoint(Head.X + 1, Head.Y);
-                    break;
-            }
-            body.AddToBegin(nElem);
+            body.AddToEnd(tail);
         }
     }
 }

@@ -19,6 +19,11 @@ namespace SnakeMain
             get { return matrix[y, x]; }
             set { matrix[y, x] = value; }
         }
+        public TMapPoint this [TPoint p]
+        {
+            get { return matrix[p.Y, p.X]; }
+            set { matrix[p.Y, p.X] = value; }
+        }
         public TMap(TMapPoint [,] _map)
         {
             if (_map.GetLength(0) > MAX_HEIGHT || _map.GetLength(1) > MAX_WIDTH)

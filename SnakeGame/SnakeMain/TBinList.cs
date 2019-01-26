@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SnakeMain
 {
-    class TBinList<T>:IEnumerable
+    class TBinList<T>:IEnumerable<T>
     {
         private TBinList<T> next, pref;
         public int Size
@@ -59,14 +59,20 @@ namespace SnakeMain
                 return next.FindLast();
             return Data;
         }
-        IEnumerator IEnumerable.GetEnumerator()
+
+        public IEnumerator<T> GetEnumerator()
         {
             TBinList<T> cur = this;
             do
             {
-                yield return cur;
+                yield return cur.Data;
                 cur = cur.next;
             } while (cur != null);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
