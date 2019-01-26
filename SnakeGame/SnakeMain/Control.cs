@@ -46,5 +46,9 @@ namespace SnakeMain
                 sr.Close();
             }
         }
+        public static void ChangeDirSnake(TDirection _dir)
+        {
+            Game.ChangeDirSnake(_dir);
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace SnakeMain
             }
         }
         public T Data { get; set; }
+        public T GetNext { get { return next.Data; } }
         public TBinList(T elem)
         {
             next = pref = null;

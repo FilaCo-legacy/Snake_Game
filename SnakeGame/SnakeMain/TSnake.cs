@@ -6,12 +6,38 @@ using System.Threading.Tasks;
 
 namespace SnakeMain
 {
+    public enum TDirection { UP, DOWN, LEFT, RIGHT };
     public class TSnake
     {
-        const int MIN_SIZE = 3;
-        public enum TDirection { UP, DOWN, LEFT, RIGHT};
+        const int MIN_SIZE = 3;        
         private TBinList<TPoint> body;
-        public TDirection Direct { get; set; }
+        private TDirection direct;
+        public TDirection Direct
+        {
+            get { return direct; }
+            set
+            {
+                switch (value)
+                {
+                    case TDirection.DOWN:
+                        if (body.GetNext.Y != body.Data.Y + 1)
+                            direct = value;
+                        break;
+                    case TDirection.UP:
+                        if (body.GetNext.Y != body.Data.Y - 1)
+                            direct = value;
+                        break;
+                    case TDirection.LEFT:
+                        if (body.GetNext.X != body.Data.X - 1)
+                            direct = value;
+                        break;
+                    case TDirection.RIGHT:
+                        if (body.GetNext.X != body.Data.X + 1)
+                            direct = value;
+                        break;
+                }
+            }
+        }
         public int Size { get { return body.Size; } }
         public TPoint Head { get { return body.Data; } }
         public TPoint Tail { get { return body.FindLast(); } }

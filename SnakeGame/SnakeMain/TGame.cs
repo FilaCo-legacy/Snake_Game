@@ -40,5 +40,9 @@ namespace SnakeMain
         {
             GameOver?.Invoke(sender, e);
         }
+        public void ChangeDirSnake(TDirection _dir)
+        {
+            Snake.Direct = _dir;
+        }
     }
 }

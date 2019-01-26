@@ -41,16 +41,16 @@
             this.itemLoadMap = new System.Windows.Forms.ToolStripMenuItem();
             this.itemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTable = new System.Windows.Forms.TableLayoutPanel();
+            this.gamePlace = new System.Windows.Forms.PictureBox();
             this.tableList_Menu = new System.Windows.Forms.TableLayoutPanel();
             this.topList = new System.Windows.Forms.RichTextBox();
-            this.gamePlace = new System.Windows.Forms.PictureBox();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.menuButtons.SuspendLayout();
             this.tableButtons.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.mainTable.SuspendLayout();
-            this.tableList_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePlace)).BeginInit();
+            this.tableList_Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // openMap
@@ -186,6 +186,18 @@
             this.mainTable.Size = new System.Drawing.Size(640, 425);
             this.mainTable.TabIndex = 5;
             // 
+            // gamePlace
+            // 
+            this.gamePlace.BackColor = System.Drawing.Color.Transparent;
+            this.gamePlace.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gamePlace.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gamePlace.Location = new System.Drawing.Point(10, 10);
+            this.gamePlace.Margin = new System.Windows.Forms.Padding(10);
+            this.gamePlace.Name = "gamePlace";
+            this.gamePlace.Size = new System.Drawing.Size(408, 405);
+            this.gamePlace.TabIndex = 0;
+            this.gamePlace.TabStop = false;
+            // 
             // tableList_Menu
             // 
             this.tableList_Menu.ColumnCount = 1;
@@ -219,18 +231,10 @@
             this.topList.TabIndex = 4;
             this.topList.Text = "Топ-5 игроков:";
             // 
-            // gamePlace
+            // gameTimer
             // 
-            this.gamePlace.BackColor = System.Drawing.Color.Transparent;
-            this.gamePlace.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.gamePlace.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gamePlace.Location = new System.Drawing.Point(10, 10);
-            this.gamePlace.Margin = new System.Windows.Forms.Padding(10);
-            this.gamePlace.Name = "gamePlace";
-            this.gamePlace.Size = new System.Drawing.Size(408, 405);
-            this.gamePlace.TabIndex = 0;
-            this.gamePlace.TabStop = false;
-            this.gamePlace.Paint += new System.Windows.Forms.PaintEventHandler(this.gamePlace_Paint);
+            this.gameTimer.Interval = 500;
+            this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
             // MainWindow
             // 
@@ -243,6 +247,7 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.mainMenu;
             this.Name = "MainWindow";
             this.Text = "SnakeTheGame";
@@ -251,8 +256,8 @@
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.mainTable.ResumeLayout(false);
-            this.tableList_Menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gamePlace)).EndInit();
+            this.tableList_Menu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
