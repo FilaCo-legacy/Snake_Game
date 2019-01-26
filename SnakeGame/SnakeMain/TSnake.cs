@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace SnakeMain
 {
     public enum TDirection { UP, DOWN, LEFT, RIGHT };
-    public class TSnake
+    public class TSnake:IEnumerable<TPoint> 
     {
         const int MIN_SIZE = 3;        
         private TBinList<TPoint> body;
@@ -73,6 +74,16 @@ namespace SnakeMain
         public void GrowUp(TPoint tail)
         {
             body.AddToEnd(tail);
+        }
+
+        public IEnumerator<TPoint> GetEnumerator()
+        {
+            return ((IEnumerable<TPoint>)body).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<TPoint>)body).GetEnumerator();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace SnakeMain
     [Serializable]
     public class TGame
     {
-        private enum TResult { GAME_OVER, GROW_UP, NOTHING}
+        public enum TResult { GAME_OVER, GROW_UP, NOTHING}
         public TMap Map { get; set; }
         public TSnake Snake { get; set; }
         public int Score { get; set; }
@@ -25,9 +25,9 @@ namespace SnakeMain
         {
 
         }
-        public void GameStart()
+        public void GameStart(TMap trgtMap)
         {
-
+            Map = trgtMap;
         }
         private TResult CheckState()
         {
@@ -45,11 +45,52 @@ namespace SnakeMain
                     return TResult.NOTHING;                    
             }
         }
-        public void Turn()
+        private void UpdateMap()
+        {
+            bool needToGenFruit = true;
+            for (int i = 0; i < Map.Width; ++i)
+            {
+                for (int j = 0; j < Map.Height; ++j)
+                {
+                    if (Map[j, i] == TMapPoint.SNAKE)
+                        Map[j, i] = TMapPoint.EMPTY;
+                }
+            }
+            foreach (var cur in Snake)
+                Map[cur] = TMapPoint.SNAKE;
+            for (int i = 0; i < Map.Width; ++i)           
+                for (int j = 0; j < Map.Height; ++j)
+                    if (Map[j, i] == TMapPoint.FRUIT)
+                    {
+                        needToGenFruit = false;
+                        break;
+                    }
+            if (needToGenFruit)
+                GenFruit();
+
+        }
+        private void GenFruit()
+        {
+            Random rnd = new Random();
+            bool check = false;
+            TPoint p = new TPoint(0,0);
+            do
+            {
+                check = Map[p] == TMapPoint.EMPTY;
+                if (!check)
+                {
+                    p.X = rnd.Next(1, Map.Width - 1);
+                    p.Y = rnd.Next(1, Map.Height - 1);
+                }
+            } while (!check);
+            Map[p] = TMapPoint.FRUIT;
+        }
+        public TResult Turn()
         {
             TPoint tmpTail = Snake.Tail;
             Snake.Move();
-            switch (CheckState())
+            TResult res = CheckState();
+            switch (res)
             {
                 case TResult.GAME_OVER:
                     OnGameOver(this, new GameOverHandlerEventArgs(Score)); 
@@ -60,6 +101,8 @@ namespace SnakeMain
                 default:
                     break;
             }
+            UpdateMap();
+            return res;
         }
         public void OnGameOver(object sender, GameOverHandlerEventArgs e)
         {
