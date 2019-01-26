@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
+using System.Drawing;
 
 namespace SnakeMain
 {
@@ -34,6 +35,7 @@ namespace SnakeMain
         {
             Game = new TGame();
             OwnerForm = owner;
+            Game.GameOver += GameOver;
         }
         public static void LoadMap(string fileName)
         {
@@ -52,7 +54,18 @@ namespace SnakeMain
         }
         public static void UpdateState()
         {
-            Game.Turn();
+            TGame.TResult curRes = Game.Turn();
+            if (curRes == TGame.TResult.GAME_OVER)
+                return;
+            Bitmap bmp = new Bitmap(OwnerForm.GetGamePlaceSize.Width, OwnerForm.GetGamePlaceSize.Height);
+            VisualEffects.DrawState(Game.Map, bmp, Game.Snake.Head);
+            OwnerForm.DrawState(bmp);
+        }
+        public static void GameOver(object sender, GameOverHandlerEventArgs args)
+        {
+            Bitmap bmp = new Bitmap(OwnerForm.GetGamePlaceSize.Width, OwnerForm.GetGamePlaceSize.Height);
+            VisualEffects.DrawState(Game.Map, bmp, string.Format($"{GameOverString}\n Score: {args.Score}"), Game.Snake.Head);
+            OwnerForm.DrawState(bmp);
         }
     }
 }

@@ -14,14 +14,11 @@ namespace SnakeMain
     public partial class MainWindow : Form
     {
         private static Regex regMap = new Regex(@".*\.map");
-        private Bitmap buf;
-        private Graphics g;
+        public Size GetGamePlaceSize { get { return gamePlace.Size; } }
         public MainWindow()
         {
             InitializeComponent();
             Control.InitGame(this);
-            buf = new Bitmap(gamePlace.Width, gamePlace.Height);
-            g = gamePlace.CreateGraphics();
 
             topList.SelectAll();
             topList.SelectionAlignment = HorizontalAlignment.Center;
@@ -29,7 +26,6 @@ namespace SnakeMain
 
             PreviewKeyDown += MainWindow_PreviewKeyDown;
         }
-
         private void MainWindow_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             TDirection nDir;
@@ -53,7 +49,6 @@ namespace SnakeMain
                     break;
             }            
         }
-
         private void itemLoadMap_Click(object sender, EventArgs e)
         {
             if (openMap.ShowDialog() == DialogResult.OK)
@@ -68,10 +63,14 @@ namespace SnakeMain
                 }
             }
         }
-
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             Control.UpdateState();
+        }
+        public void DrawState(Bitmap source)
+        {
+            using (Graphics g = gamePlace.CreateGraphics())
+                g.DrawImage(source, new Point(0, 0));
         }
     }
 }

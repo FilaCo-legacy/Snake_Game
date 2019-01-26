@@ -28,6 +28,7 @@ namespace SnakeMain
         public void GameStart(TMap trgtMap)
         {
             Map = trgtMap;
+            SnakeSpawn();
         }
         private TResult CheckState()
         {
