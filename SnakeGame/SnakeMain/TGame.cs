@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace SnakeMain
 {
+    public delegate void GameOverHandler(object source, GameOverHandlerEventArgs args);
     [Serializable]
     public class TGame
     {
         public TMap Map { get; set; }
         public TSnake Snake { get; set; }
         public int Score { get; set; }
+        public event GameOverHandler GameOver;
         public TGame()
         {
             Map = null;
@@ -33,6 +35,10 @@ namespace SnakeMain
         public void Turn()
         {
 
+        }
+        public void OnGameOver(object sender, GameOverHandlerEventArgs e)
+        {
+            GameOver?.Invoke(sender, e);
         }
     }
 }

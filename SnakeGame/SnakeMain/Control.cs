@@ -46,24 +46,5 @@ namespace SnakeMain
                 sr.Close();
             }
         }
-        public static void LoadGame(string fileName)
-        {
-            using (StreamReader sr = new StreamReader(fileName))
-            {
-                XmlSerializer xsReader = new XmlSerializer(typeof(TGame));
-                Game = (TGame)xsReader.Deserialize(sr);
-                sr.Close();
-            }
-
-        }
-        public static void SaveGame(string fileName)
-        {
-            using (StreamWriter sw = new StreamWriter(fileName))
-            {
-                XmlSerializer xsReader = new XmlSerializer(typeof(TGame));
-                xsReader.Serialize(sw, Game);
-                sw.Close();
-            }
-        }
     }
 }

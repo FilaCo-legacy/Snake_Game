@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.openMap = new System.Windows.Forms.OpenFileDialog();
-            this.gamePlace = new System.Windows.Forms.PictureBox();
             this.menuButtons = new System.Windows.Forms.Panel();
             this.tableButtons = new System.Windows.Forms.TableLayoutPanel();
             this.buttonNGame = new System.Windows.Forms.Button();
@@ -43,31 +43,20 @@
             this.mainTable = new System.Windows.Forms.TableLayoutPanel();
             this.tableList_Menu = new System.Windows.Forms.TableLayoutPanel();
             this.topList = new System.Windows.Forms.RichTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.gamePlace)).BeginInit();
+            this.gamePlace = new System.Windows.Forms.PictureBox();
+            this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.menuButtons.SuspendLayout();
             this.tableButtons.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.mainTable.SuspendLayout();
             this.tableList_Menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gamePlace)).BeginInit();
             this.SuspendLayout();
             // 
             // openMap
             // 
             this.openMap.DefaultExt = "map";
             this.openMap.Filter = "\"Snake game map file | *.snake.map";
-            // 
-            // gamePlace
-            // 
-            this.gamePlace.BackColor = System.Drawing.Color.Transparent;
-            this.gamePlace.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.gamePlace.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gamePlace.Location = new System.Drawing.Point(10, 10);
-            this.gamePlace.Margin = new System.Windows.Forms.Padding(10);
-            this.gamePlace.Name = "gamePlace";
-            this.gamePlace.Size = new System.Drawing.Size(408, 405);
-            this.gamePlace.TabIndex = 0;
-            this.gamePlace.TabStop = false;
-            this.gamePlace.Paint += new System.Windows.Forms.PaintEventHandler(this.gamePlace_Paint);
             // 
             // menuButtons
             // 
@@ -169,7 +158,7 @@
             this.itemLoadMap.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.itemLoadMap.ForeColor = System.Drawing.Color.Black;
             this.itemLoadMap.Name = "itemLoadMap";
-            this.itemLoadMap.Size = new System.Drawing.Size(180, 22);
+            this.itemLoadMap.Size = new System.Drawing.Size(163, 22);
             this.itemLoadMap.Text = "Загрузить карту";
             this.itemLoadMap.Click += new System.EventHandler(this.itemLoadMap_Click);
             // 
@@ -179,7 +168,7 @@
             this.itemExit.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.itemExit.ForeColor = System.Drawing.Color.Black;
             this.itemExit.Name = "itemExit";
-            this.itemExit.Size = new System.Drawing.Size(180, 22);
+            this.itemExit.Size = new System.Drawing.Size(163, 22);
             this.itemExit.Text = "Выход";
             // 
             // mainTable
@@ -230,6 +219,19 @@
             this.topList.TabIndex = 4;
             this.topList.Text = "Топ-5 игроков:";
             // 
+            // gamePlace
+            // 
+            this.gamePlace.BackColor = System.Drawing.Color.Transparent;
+            this.gamePlace.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gamePlace.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gamePlace.Location = new System.Drawing.Point(10, 10);
+            this.gamePlace.Margin = new System.Windows.Forms.Padding(10);
+            this.gamePlace.Name = "gamePlace";
+            this.gamePlace.Size = new System.Drawing.Size(408, 405);
+            this.gamePlace.TabIndex = 0;
+            this.gamePlace.TabStop = false;
+            this.gamePlace.Paint += new System.Windows.Forms.PaintEventHandler(this.gamePlace_Paint);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,13 +246,13 @@
             this.MainMenuStrip = this.mainMenu;
             this.Name = "MainWindow";
             this.Text = "SnakeTheGame";
-            ((System.ComponentModel.ISupportInitialize)(this.gamePlace)).EndInit();
             this.menuButtons.ResumeLayout(false);
             this.tableButtons.ResumeLayout(false);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.mainTable.ResumeLayout(false);
             this.tableList_Menu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gamePlace)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,6 +274,7 @@
         private System.Windows.Forms.TableLayoutPanel mainTable;
         private System.Windows.Forms.TableLayoutPanel tableList_Menu;
         private System.Windows.Forms.RichTextBox topList;
+        private System.Windows.Forms.Timer gameTimer;
     }
 }
 
