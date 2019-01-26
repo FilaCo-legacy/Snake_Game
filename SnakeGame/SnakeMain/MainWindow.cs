@@ -13,7 +13,6 @@ namespace SnakeMain
 {
     public partial class MainWindow : Form
     {
-        private static Regex regGame = new Regex(@".*\.game");
         private static Regex regMap = new Regex(@".*\.map");
         private Bitmap buf;
         private Graphics g;
@@ -23,35 +22,18 @@ namespace SnakeMain
             Control.InitGame(this);
             buf = new Bitmap(gamePlace.Width, gamePlace.Height);
             g = gamePlace.CreateGraphics();
+
+            topList.SelectAll();
+            topList.SelectionAlignment = HorizontalAlignment.Center;
+            topList.DeselectAll();
         }
-        private void itemLoadFile_Click(object sender, EventArgs e)
+        private void itemLoadMap_Click(object sender, EventArgs e)
         {
-            if (openFile.ShowDialog() == DialogResult.OK)
+            if (openMap.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    if (regGame.IsMatch(openFile.FileName))
-                        Control.LoadGame(openFile.FileName);
-                    else if (regMap.IsMatch(openFile.FileName))
-                        Control.LoadMap(openFile.FileName);
-                    else
-                        MessageBox.Show(this, "Формат файла неверен", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception exc)
-                {
-                    MessageBox.Show(this, exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                VisualEffects.DrawEndGame(gamePlace.Width, gamePlace.Height, out buf);
-                g.DrawImage(buf, 0, 0);
-            }
-        }
-        private void itemSaveGame_Click(object sender, EventArgs e)
-        {
-            if (saveGame.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    Control.SaveGame(saveGame.FileName);
+                   Control.LoadMap(openMap.FileName);
                 }
                 catch (Exception exc)
                 {
